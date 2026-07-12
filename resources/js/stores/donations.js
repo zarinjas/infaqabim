@@ -9,7 +9,7 @@ export const useDonationStore = defineStore('donations', () => {
   async function fetchAll() {
     loading.value = true
     try {
-      const { data } = await axios.get('/admin/donations')
+      const { data } = await axios.get('/api/admin/donations')
       donations.value = data.data ?? data
     } finally {
       loading.value = false
@@ -17,21 +17,21 @@ export const useDonationStore = defineStore('donations', () => {
   }
 
   async function approve(id) {
-    const { data } = await axios.patch(`/admin/donations/${id}/approve`)
+    const { data } = await axios.patch(`/api/admin/donations/${id}/approve`)
     const idx = donations.value.findIndex(d => d.id === id)
     if (idx !== -1) donations.value[idx] = data
     return data
   }
 
   async function reject(id) {
-    const { data } = await axios.patch(`/admin/donations/${id}/reject`)
+    const { data } = await axios.patch(`/api/admin/donations/${id}/reject`)
     const idx = donations.value.findIndex(d => d.id === id)
     if (idx !== -1) donations.value[idx] = data
     return data
   }
 
   async function remove(id) {
-    await axios.delete(`/admin/donations/${id}`)
+    await axios.delete(`/api/admin/donations/${id}`)
     donations.value = donations.value.filter(d => d.id !== id)
   }
 

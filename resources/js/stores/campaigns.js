@@ -9,7 +9,7 @@ export const useCampaignStore = defineStore('campaigns', () => {
   async function fetchAll() {
     loading.value = true
     try {
-      const { data } = await axios.get('/admin/campaigns')
+      const { data } = await axios.get('/api/admin/campaigns')
       campaigns.value = data.data ?? data
     } finally {
       loading.value = false
@@ -17,12 +17,12 @@ export const useCampaignStore = defineStore('campaigns', () => {
   }
 
   async function fetchOne(id) {
-    const { data } = await axios.get(`/admin/campaigns/${id}`)
+    const { data } = await axios.get(`/api/admin/campaigns/${id}`)
     return data
   }
 
   async function create(formData) {
-    const { data } = await axios.post('/admin/campaigns', formData, {
+    const { data } = await axios.post('/api/admin/campaigns', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
     campaigns.value.unshift(data)
@@ -33,7 +33,7 @@ export const useCampaignStore = defineStore('campaigns', () => {
     // PHP does not populate $_FILES for PUT/PATCH multipart requests, so we
     // POST with Laravel's _method spoofing to keep file uploads working.
     formData.append('_method', 'PUT')
-    const { data } = await axios.post(`/admin/campaigns/${id}`, formData, {
+    const { data } = await axios.post(`/api/admin/campaigns/${id}`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
     const idx = campaigns.value.findIndex(c => c.id === id)
@@ -42,7 +42,7 @@ export const useCampaignStore = defineStore('campaigns', () => {
   }
 
   async function remove(id) {
-    await axios.delete(`/admin/campaigns/${id}`)
+    await axios.delete(`/api/admin/campaigns/${id}`)
     campaigns.value = campaigns.value.filter(c => c.id !== id)
   }
 

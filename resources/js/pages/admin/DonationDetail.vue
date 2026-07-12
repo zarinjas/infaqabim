@@ -112,7 +112,7 @@ const loading = ref(true)
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get(`/admin/donations/${route.params.id}`)
+    const { data } = await axios.get(`/api/admin/donations/${route.params.id}`)
     donation.value = data
   } catch {
     router.push('/admin/donations')

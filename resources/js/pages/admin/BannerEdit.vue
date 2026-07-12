@@ -95,7 +95,7 @@ function handleFileChange(e) {
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get(`/admin/banners/${route.params.id}`)
+    const { data } = await axios.get(`/api/admin/banners/${route.params.id}`)
     form.title = data.title
     form.subtitle = data.subtitle || ''
     form.link = data.link || ''

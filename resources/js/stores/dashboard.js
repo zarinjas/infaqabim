@@ -9,7 +9,7 @@ export const useDashboardStore = defineStore('dashboard', () => {
   async function fetchStats() {
     loading.value = true
     try {
-      const { data } = await axios.get('/admin/dashboard')
+      const { data } = await axios.get('/api/admin/dashboard')
       stats.value = data
     } finally {
       loading.value = false

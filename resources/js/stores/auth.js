@@ -7,14 +7,14 @@ export const useAuthStore = defineStore('auth', () => {
   const loading = ref(false)
 
   async function login(email, password, remember = false) {
-    const { data } = await axios.post('/admin/login', { email, password, remember })
+    const { data } = await axios.post('/api/admin/login', { email, password, remember })
     admin.value = data.admin
   }
 
   async function check() {
     loading.value = true
     try {
-      const { data } = await axios.get('/admin/me')
+      const { data } = await axios.get('/api/admin/me')
       admin.value = data.admin
     } catch {
       admin.value = null
@@ -25,7 +25,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function logout() {
     try {
-      await axios.post('/admin/logout')
+      await axios.post('/api/admin/logout')
     } catch {
       //
     }

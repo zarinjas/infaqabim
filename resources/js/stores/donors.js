@@ -9,7 +9,7 @@ export const useDonorStore = defineStore('donors', () => {
   async function fetchAll() {
     loading.value = true
     try {
-      const { data } = await axios.get('/admin/donors')
+      const { data } = await axios.get('/api/admin/donors')
       donors.value = data.data ?? data
     } finally {
       loading.value = false

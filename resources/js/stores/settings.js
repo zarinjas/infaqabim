@@ -10,7 +10,7 @@ export const useSettingStore = defineStore('settings', () => {
   async function fetchAll() {
     loading.value = true
     try {
-      const { data } = await axios.get('/admin/settings')
+      const { data } = await axios.get('/api/admin/settings')
       settings.value = data
     } finally {
       loading.value = false
@@ -23,7 +23,7 @@ export const useSettingStore = defineStore('settings', () => {
       const isFormData = payload instanceof FormData;
       const config = isFormData ? { headers: { 'Content-Type': 'multipart/form-data' } } : {};
       
-      const { data } = await axios.post('/admin/settings', payload, config); // Use POST for FormData and Method Spoofing
+      const { data } = await axios.post('/api/admin/settings', payload, config); // Use POST for FormData and Method Spoofing
       settings.value = data
     } finally {
       saving.value = false

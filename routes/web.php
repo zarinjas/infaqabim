@@ -26,7 +26,7 @@ Route::get('/api/donations/status/{reference}', [DonationController::class, 'sta
 Route::post('/api/senangpay/callback', [SenangPayCallbackController::class, 'callback']);
 Route::get('/api/senangpay/return', [SenangPayCallbackController::class, 'return']);
 
-Route::prefix('admin')->group(function () {
+Route::prefix('api/admin')->group(function () {
     Route::post('login', [AdminAuthController::class, 'login'])->middleware('throttle:5,1');
     Route::post('logout', [AdminAuthController::class, 'logout']);
     Route::get('me', [AdminAuthController::class, 'me']);
@@ -43,7 +43,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('donations/{id}', [DonationController::class, 'destroy']);
 
         Route::get('settings', [SettingController::class, 'index']);
-        Route::post('settings', [SettingController::class, 'update']); // Use POST to handle FormData for file uploads
+        Route::post('settings', [SettingController::class, 'update']);
 
         Route::get('donors', [AdminDonorController::class, 'index']);
     });
