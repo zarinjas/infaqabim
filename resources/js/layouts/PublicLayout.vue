@@ -64,59 +64,29 @@
     </main>
 
     <footer class="border-t border-gray-100 bg-white">
-      <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr]">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-sm text-white">
-                {{ siteName.charAt(0) }}
-              </span>
-              <h3 class="text-lg font-bold text-gray-900">{{ siteName }}</h3>
-            </div>
-            <p class="mt-3 max-w-sm text-sm leading-relaxed text-gray-500">
-              {{ settings.site_description || 'Platform sedekah dan infaq untuk membantu mereka yang memerlukan.' }}
-            </p>
-            <div v-if="socialLinks.length" class="mt-5 flex gap-2.5">
-              <a
-                v-for="social in socialLinks"
-                :key="social.key"
-                :href="social.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-emerald-100 hover:text-emerald-700"
-                :aria-label="social.key"
-              >
-                <component :is="social.icon" class="h-4 w-4" />
-              </a>
-            </div>
+      <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <div class="flex items-center gap-2">
+            <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-sm text-white">
+              {{ siteName.charAt(0) }}
+            </span>
+            <span class="text-sm font-semibold text-gray-900">{{ siteName }}</span>
           </div>
-          <div>
-            <h4 class="text-sm font-semibold text-gray-900">Pautan Pantas</h4>
-            <ul class="mt-4 space-y-2.5">
-              <li v-for="item in navItems" :key="item.to">
-                <router-link :to="item.to" class="text-sm text-gray-500 transition-colors hover:text-emerald-700">{{ item.label }}</router-link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-sm font-semibold text-gray-900">Hubungi Kami</h4>
-            <ul class="mt-4 space-y-2.5 text-sm text-gray-500">
-              <li v-if="settings.site_email" class="flex items-center gap-2">
-                <svg class="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                {{ settings.site_email }}
-              </li>
-              <li v-if="settings.site_phone" class="flex items-center gap-2">
-                <svg class="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                {{ settings.site_phone }}
-              </li>
-            </ul>
+          <div v-if="socialLinks.length" class="flex gap-3">
+            <a
+              v-for="social in socialLinks"
+              :key="social.key"
+              :href="social.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-emerald-100 hover:text-emerald-700"
+              :aria-label="social.key"
+            >
+              <component :is="social.icon" class="h-4 w-4" />
+            </a>
           </div>
         </div>
-        <div class="mt-10 border-t border-gray-100 pt-6 text-center text-sm text-gray-400">
+        <div class="mt-6 text-center text-xs text-gray-400">
           &copy; {{ new Date().getFullYear() }} {{ siteName }}. Hak cipta terpelihara.
         </div>
       </div>

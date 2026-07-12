@@ -77,7 +77,7 @@ const navGroups = [
   {
     label: 'Sumbangan',
     items: [
-      { to: '/admin/donations', label: 'Donasi', icon: Icons.donation },
+      { to: '/admin/donations', label: 'Sumbangan', icon: Icons.donation },
       { to: '/admin/donors', label: 'Penderma', icon: Icons.donor },
     ],
   },

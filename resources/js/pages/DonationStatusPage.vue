@@ -8,7 +8,7 @@
 
     <section class="bg-white py-16 sm:py-20">
       <div class="mx-auto max-w-lg px-4 text-center sm:px-6 lg:px-8">
-        <div v-if="loading" class="text-sm text-gray-400">Checking payment status...</div>
+        <div v-if="loading" class="text-sm text-gray-400">Memeriksa status pembayaran...</div>
 
         <div v-else class="rounded-2xl bg-gray-50 p-8 shadow-sm ring-1 ring-gray-100">
           <div
@@ -31,11 +31,11 @@
 
           <div v-if="donation" class="mt-6 rounded-xl bg-white p-4 text-left text-sm ring-1 ring-gray-100">
             <div class="flex justify-between py-1">
-              <span class="text-gray-400">Reference</span>
+              <span class="text-gray-400">Rujukan</span>
               <span class="font-medium text-gray-900">{{ donation.reference_number }}</span>
             </div>
             <div class="flex justify-between py-1">
-              <span class="text-gray-400">Amount</span>
+              <span class="text-gray-400">Jumlah</span>
               <span class="font-medium text-gray-900">RM{{ Number(donation.amount).toLocaleString() }}</span>
             </div>
           </div>
@@ -74,7 +74,7 @@ const statusHeading = computed(() => {
 })
 
 const statusMessage = computed(() => {
-  if (status.value === 'completed') return 'Donasi anda telah berjaya direkodkan.'
+  if (status.value === 'completed') return 'Sumbangan anda telah berjaya direkodkan.'
   if (status.value === 'failed') return 'Sila cuba semula atau hubungi kami jika masalah berterusan.'
   return 'Status pembayaran anda sedang disahkan. Sila semak semula sebentar lagi.'
 })

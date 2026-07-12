@@ -16,7 +16,7 @@ class SettingSeeder extends Seeder
 
         Setting::create([
             'key' => 'site_description',
-            'value' => 'Platform sumbangan dan infak online',
+            'value' => 'Platform sedekah dan infaq online',
         ]);
 
         Setting::create([

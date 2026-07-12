@@ -1,10 +1,10 @@
 <template>
   <div>
-    <PageHeader title="Donasi" subtitle="Lihat dan uruskan donasi." />
+    <PageHeader title="Sumbangan" subtitle="Lihat dan uruskan sumbangan." />
     <div class="mt-6 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100">
       <DataTable :columns="columns" :rows="store.donations" :loading="store.loading">
         <template #empty>
-          <EmptyState title="Belum ada donasi." description="Donasi daripada penderma akan dipaparkan di sini." />
+          <EmptyState title="Belum ada sumbangan." description="Sumbangan daripada penderma akan dipaparkan di sini." />
         </template>
         <template #cell-amount="{ row }">RM{{ Number(row.amount).toLocaleString() }}</template>
         <template #cell-status="{ row }">
@@ -55,32 +55,32 @@ function statusLabel(status) {
 }
 
 async function handleApprove(id) {
-  if (!confirm('Luluskan donasi ini?')) return
+  if (!confirm('Luluskan sumbangan ini?')) return
   try {
     await store.approve(id)
-    toast.success('Donasi diluluskan.')
+    toast.success('Sumbangan diluluskan.')
   } catch {
-    toast.error('Gagal meluluskan donasi.')
+    toast.error('Gagal meluluskan sumbangan.')
   }
 }
 
 async function handleReject(id) {
-  if (!confirm('Tolak donasi ini?')) return
+  if (!confirm('Tolak sumbangan ini?')) return
   try {
     await store.reject(id)
-    toast.success('Donasi ditolak.')
+    toast.success('Sumbangan ditolak.')
   } catch {
-    toast.error('Gagal menolak donasi.')
+    toast.error('Gagal menolak sumbangan.')
   }
 }
 
 async function handleDelete(id) {
-  if (!confirm('Padam donasi ini?')) return
+  if (!confirm('Padam sumbangan ini?')) return
   try {
     await store.remove(id)
-    toast.success('Donasi berjaya dipadam.')
+    toast.success('Sumbangan berjaya dipadam.')
   } catch {
-    toast.error('Gagal memadam donasi.')
+    toast.error('Gagal memadam sumbangan.')
   }
 }
 

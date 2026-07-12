@@ -16,6 +16,7 @@ class SettingController extends Controller
     private const CATEGORIES = [
         'general' => [
             'site_name', 'site_email', 'site_phone', 'site_description', 'app_logo',
+            'home_about_text', 'about_mission_text',
         ],
         'donation' => [
             'min_donation', 'max_donation', 'currency',
@@ -91,6 +92,8 @@ class SettingController extends Controller
             'nav_label_2' => 'nullable|string|max:50',
             'nav_label_3' => 'nullable|string|max:50',
             'nav_label_4' => 'nullable|string|max:50',
+            'home_about_text' => 'nullable|string',
+            'about_mission_text' => 'nullable|string',
             'app_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'payment_method' => 'nullable|in:senangpay,manual,both',
             'senangpay_merchant_id' => 'nullable|string|max:255',

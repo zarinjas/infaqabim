@@ -19,6 +19,7 @@ class PublicSettingController extends Controller
         'contact_postcode', 'contact_country', 'contact_hours',
         'social_facebook', 'social_twitter', 'social_instagram',
         'social_youtube', 'social_telegram',
+        'home_about_text', 'about_mission_text',
     ];
 
     public function index(): JsonResponse

@@ -1,9 +1,9 @@
 <template>
   <div>
     <PageHeader
-      :title="`Donasi #${donation?.id ?? ''}`"
-      subtitle="Butiran donasi."
-      :breadcrumb="[{ label: 'Donasi', to: '/admin/donations' }, { label: `#${route.params.id}` }]"
+      :title="`Sumbangan #${donation?.id ?? ''}`"
+      subtitle="Butiran sumbangan."
+      :breadcrumb="[{ label: 'Sumbangan', to: '/admin/donations' }, { label: `#${route.params.id}` }]"
     >
       <template #actions>
         <Button tag="router-link" to="/admin/donations" variant="outline">
@@ -41,7 +41,7 @@
       </div>
 
       <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100">
-        <h3 class="text-sm font-semibold text-gray-900">Butiran Donasi</h3>
+        <h3 class="text-sm font-semibold text-gray-900">Butiran Sumbangan</h3>
         <dl class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <dt class="text-xs text-gray-400">Kempen</dt>
@@ -126,24 +126,24 @@ function statusLabel(status) {
 }
 
 async function handleApprove() {
-  if (!confirm('Luluskan donasi ini?')) return
+  if (!confirm('Luluskan sumbangan ini?')) return
   try {
     await store.approve(route.params.id)
     donation.value.status = 'completed'
-    toast.success('Donasi diluluskan.')
+    toast.success('Sumbangan diluluskan.')
   } catch {
-    toast.error('Gagal meluluskan donasi.')
+    toast.error('Gagal meluluskan sumbangan.')
   }
 }
 
 async function handleReject() {
-  if (!confirm('Tolak donasi ini?')) return
+  if (!confirm('Tolak sumbangan ini?')) return
   try {
     await store.reject(route.params.id)
     donation.value.status = 'failed'
-    toast.success('Donasi ditolak.')
+    toast.success('Sumbangan ditolak.')
   } catch {
-    toast.error('Gagal menolak donasi.')
+    toast.error('Gagal menolak sumbangan.')
   }
 }
 

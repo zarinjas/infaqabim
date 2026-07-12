@@ -36,23 +36,6 @@
       <div class="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-teal-500/20 blur-3xl" />
     </section>
 
-    <section class="border-b border-gray-100 bg-white py-8">
-      <div class="mx-auto grid max-w-6xl grid-cols-3 gap-6 px-4 text-center sm:px-6 lg:px-8">
-        <div>
-          <div class="text-2xl font-bold text-emerald-700 sm:text-3xl">RM500K+</div>
-          <div class="mt-1 text-xs text-gray-400">Jumlah Terkumpul</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-emerald-700 sm:text-3xl">1,200+</div>
-          <div class="mt-1 text-xs text-gray-400">Penyumbang</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-emerald-700 sm:text-3xl">15+</div>
-          <div class="mt-1 text-xs text-gray-400">Kempen</div>
-        </div>
-      </div>
-    </section>
-
     <section v-if="featured" class="bg-white py-16 sm:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="mb-10 text-center">
@@ -114,7 +97,7 @@
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Tentang {{ siteName }}</h2>
           <p class="mt-4 text-sm leading-relaxed text-gray-500 sm:text-base">
-            {{ siteName }} adalah platform sedekah dan infaq yang ditubuhkan untuk memudahkan masyarakat Malaysia memberi sumbangan kepada golongan yang memerlukan. Kami percaya setiap sumbangan, tidak kira besar atau kecil, dapat membawa perubahan yang bermakna dalam kehidupan mereka yang kurang bernasib baik.
+            {{ homeAboutText }}
           </p>
           <div class="mt-6 flex justify-center gap-4">
             <router-link to="/about" class="inline-flex items-center gap-1 text-sm font-medium text-emerald-600 hover:text-emerald-700">
@@ -143,6 +126,7 @@ import { usePublicSettingStore } from '../stores/publicSettings'
 
 const publicSettings = usePublicSettingStore()
 const siteName = computed(() => publicSettings.settings.site_name || 'INFAQABIM')
+const homeAboutText = computed(() => publicSettings.settings.home_about_text || `${siteName.value} adalah platform sedekah dan infaq yang ditubuhkan untuk memudahkan masyarakat Malaysia memberi sumbangan kepada golongan yang memerlukan. Kami percaya setiap sumbangan, tidak kira besar atau kecil, dapat membawa perubahan yang bermakna dalam kehidupan mereka yang kurang bernasib baik.`)
 
 const banners = ref([])
 const featured = ref(null)

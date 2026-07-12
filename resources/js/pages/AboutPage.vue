@@ -10,7 +10,7 @@
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Misi Kami</h2>
           <p class="mt-4 text-sm leading-relaxed text-gray-500 sm:text-base">
-            {{ siteName }} adalah platform sedekah dan infaq yang ditubuhkan untuk memudahkan masyarakat Malaysia memberi sumbangan kepada golongan yang memerlukan. Kami percaya setiap sumbangan, tidak kira besar atau kecil, dapat membawa perubahan yang bermakna dalam kehidupan mereka yang kurang bernasib baik.
+            {{ aboutMissionText }}
           </p>
         </div>
 
@@ -44,23 +44,6 @@
           </div>
         </div>
 
-        <div class="mt-12 border-t border-gray-100 pt-12 text-center">
-          <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Impak Kami</h2>
-          <div class="mt-8 grid grid-cols-3 gap-4">
-            <div>
-              <div class="text-2xl font-bold text-emerald-700">RM500K+</div>
-              <div class="mt-1 text-xs text-gray-400">Jumlah Sumbangan</div>
-            </div>
-            <div>
-              <div class="text-2xl font-bold text-emerald-700">1,200+</div>
-              <div class="mt-1 text-xs text-gray-400">Penyumbang</div>
-            </div>
-            <div>
-              <div class="text-2xl font-bold text-emerald-700">15+</div>
-              <div class="mt-1 text-xs text-gray-400">Kempen</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   </div>
@@ -73,4 +56,5 @@ import { usePublicSettingStore } from '../stores/publicSettings'
 
 const publicSettings = usePublicSettingStore()
 const siteName = computed(() => publicSettings.settings.site_name || 'INFAQABIM')
+const aboutMissionText = computed(() => publicSettings.settings.about_mission_text || `${siteName.value} adalah platform sedekah dan infaq yang ditubuhkan untuk memudahkan masyarakat Malaysia memberi sumbangan kepada golongan yang memerlukan. Kami percaya setiap sumbangan, tidak kira besar atau kecil, dapat membawa perubahan yang bermakna dalam kehidupan mereka yang kurang bernasib baik.`)
 </script>

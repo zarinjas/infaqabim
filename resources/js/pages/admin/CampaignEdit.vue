@@ -3,7 +3,7 @@
     <PageHeader
       title="Edit Kempen"
       subtitle="Kemaskini butiran kempen."
-      :breadcrumb="[{ label: 'Kempen', to: '/admin/campaigns' }, { label: 'Edit' }]"
+      :breadcrumb="[{ label: 'Kempen', to: '/admin/campaigns' }, { label: 'Sunting' }]"
     >
       <template #actions>
         <Button tag="router-link" to="/admin/campaigns" variant="outline">

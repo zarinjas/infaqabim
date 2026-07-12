@@ -35,6 +35,7 @@ jobs:
             --exclude='node_modules/' \
             --exclude='vendor/' \
             --exclude='storage/' \
+            --exclude='public/storage' \
             --exclude='bootstrap/cache/*.php' \
             --exclude='.github/' \
             -e 'ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no' \
@@ -50,5 +51,6 @@ jobs:
             set -e
             cd /home/infaqabim.my/public_html
             composer install --no-dev --optimize-autoloader
+            php artisan storage:link
             php artisan migrate --force
             php artisan optimize

@@ -28,7 +28,7 @@
               :to="`/admin/banners/${row.id}/edit`"
               class="text-xs font-medium text-emerald-600 hover:text-emerald-700"
             >
-              Edit
+              Sunting
             </router-link>
             <button class="text-xs font-medium text-red-500 hover:text-red-600" @click="handleDelete(row.id)">Padam</button>
           </div>

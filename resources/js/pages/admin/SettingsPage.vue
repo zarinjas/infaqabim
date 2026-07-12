@@ -34,6 +34,8 @@
           <FormInput v-model="form.site_email" label="E-mel Hubungan" type="email" placeholder="hello@infaqabim.my" />
           <FormInput v-model="form.site_phone" label="Telefon Hubungan" placeholder="+60 12-345 6789" />
           <FormTextarea v-model="form.site_description" label="Penerangan Laman" placeholder="Penerangan platform..." :rows="3" />
+          <FormTextarea v-model="form.home_about_text" label="Teks Halaman Utama (Tentang)" placeholder="Teks untuk bahagian Tentang di halaman utama..." :rows="4" />
+          <FormTextarea v-model="form.about_mission_text" label="Teks Halaman About (Misi)" placeholder="Teks untuk bahagian Misi di halaman About..." :rows="4" />
         </div>
       </div>
 
@@ -166,6 +168,8 @@ const form = reactive({
   site_email: '',
   site_phone: '',
   site_description: '',
+  home_about_text: '',
+  about_mission_text: '',
   nav_label_1: '',
   nav_label_2: '',
   nav_label_3: '',
@@ -203,6 +207,8 @@ watch(() => store.settings, (val) => {
   if (val.site_email) form.site_email = val.site_email
   if (val.site_phone) form.site_phone = val.site_phone
   if (val.site_description) form.site_description = val.site_description
+  if (val.home_about_text) form.home_about_text = val.home_about_text
+  if (val.about_mission_text) form.about_mission_text = val.about_mission_text
   if (val.nav_label_1) form.nav_label_1 = val.nav_label_1
   if (val.nav_label_2) form.nav_label_2 = val.nav_label_2
   if (val.nav_label_3) form.nav_label_3 = val.nav_label_3
@@ -237,6 +243,8 @@ async function handleSave() {
     formData.append('site_email', form.site_email)
     formData.append('site_phone', form.site_phone)
     formData.append('site_description', form.site_description)
+    if (form.home_about_text) formData.append('home_about_text', form.home_about_text)
+    if (form.about_mission_text) formData.append('about_mission_text', form.about_mission_text)
     if (form.nav_label_1) formData.append('nav_label_1', form.nav_label_1)
     if (form.nav_label_2) formData.append('nav_label_2', form.nav_label_2)
     if (form.nav_label_3) formData.append('nav_label_3', form.nav_label_3)
