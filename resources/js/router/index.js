@@ -29,6 +29,11 @@ const routes = [
         component: () => import('../pages/DonatePage.vue'),
       },
       {
+        path: 'donate/:campaignId',
+        name: 'donate.campaign',
+        component: () => import('../pages/CampaignDonatePage.vue'),
+      },
+      {
         path: 'donate/status',
         name: 'donate.status',
         component: () => import('../pages/DonationStatusPage.vue'),
@@ -92,6 +97,12 @@ const routes = [
         name: 'admin.campaigns.edit',
         meta: { auth: true },
         component: () => import('../pages/admin/CampaignEdit.vue'),
+      },
+      {
+        path: 'campaigns/:id/qr',
+        name: 'admin.campaigns.qr',
+        meta: { auth: true },
+        component: () => import('../pages/admin/CampaignQR.vue'),
       },
       {
         path: 'donations',

@@ -2,12 +2,14 @@
   <div class="flex min-h-screen flex-col bg-gray-50 font-sans text-gray-900">
     <header class="sticky top-0 z-50 border-b border-gray-100 bg-white/90 backdrop-blur-lg">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
-        <router-link to="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-emerald-700">
-          <img v-if="settings.app_logo" :src="`/storage/${settings.app_logo}`" alt="" class="h-8 w-auto" />
-          <span v-else class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-sm text-white">
-            {{ siteName.charAt(0) }}
-          </span>
-          {{ siteName }}
+        <router-link to="/" class="flex items-center gap-2">
+          <img v-if="settings.app_logo" :src="`/storage/${settings.app_logo}`" alt="" class="h-20 w-auto" />
+          <template v-else>
+            <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-sm text-white">
+              {{ siteName.charAt(0) }}
+            </span>
+            <span class="text-xl font-bold tracking-tight text-emerald-700">{{ siteName }}</span>
+          </template>
         </router-link>
         <nav class="hidden items-center gap-1 lg:flex">
           <router-link
@@ -68,11 +70,13 @@
       <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <div class="flex items-center gap-2">
-            <img v-if="settings.app_logo" :src="`/storage/${settings.app_logo}`" alt="" class="h-8 w-auto" />
-            <span v-else class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-sm text-white">
-              {{ siteName.charAt(0) }}
-            </span>
-            <span class="text-sm font-semibold text-gray-900">{{ siteName }}</span>
+            <img v-if="settings.app_logo" :src="`/storage/${settings.app_logo}`" alt="" class="h-20 w-auto" />
+            <template v-else>
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-sm text-white">
+                {{ siteName.charAt(0) }}
+              </span>
+              <span class="text-sm font-semibold text-gray-900">{{ siteName }}</span>
+            </template>
           </div>
           <div v-if="socialLinks.length" class="flex gap-3">
             <a

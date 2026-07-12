@@ -49,7 +49,7 @@
               </div>
 
               <router-link
-                :to="`/donate?campaign=${campaign.id}`"
+                :to="`/donate/${campaign.id}`"
                 class="mt-8 flex w-full items-center justify-center rounded-2xl bg-emerald-600 px-6 py-4 text-base font-bold text-white shadow-sm transition-all hover:bg-emerald-700 hover:shadow-md active:scale-[0.98]"
               >
                 Sumbang Sekarang

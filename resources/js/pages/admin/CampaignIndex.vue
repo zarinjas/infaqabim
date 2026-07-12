@@ -33,6 +33,12 @@
             >
               Sunting
             </router-link>
+            <router-link
+              :to="`/admin/campaigns/${row.id}/qr`"
+              class="text-xs font-medium text-blue-600 hover:text-blue-700"
+            >
+              QR
+            </router-link>
             <button class="text-xs font-medium text-red-500 hover:text-red-600" @click="handleDelete(row.id)">
               Padam
             </button>
