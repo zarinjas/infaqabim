@@ -20,7 +20,10 @@ export const useSettingStore = defineStore('settings', () => {
   async function update(payload) {
     saving.value = true
     try {
-      const { data } = await axios.put('/admin/settings', payload)
+      const isFormData = payload instanceof FormData;
+      const config = isFormData ? { headers: { 'Content-Type': 'multipart/form-data' } } : {};
+      
+      const { data } = await axios.post('/admin/settings', payload, config); // Use POST for FormData and Method Spoofing
       settings.value = data
     } finally {
       saving.value = false

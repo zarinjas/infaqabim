@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeroBanner
-      title="Tentang INFAQABIM"
+      :title="`Tentang ${siteName}`"
       subtitle="Ketahui lebih lanjut tentang misi dan visi kami dalam membantu masyarakat."
     />
 
@@ -10,7 +10,7 @@
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Misi Kami</h2>
           <p class="mt-4 text-sm leading-relaxed text-gray-500 sm:text-base">
-            INFAQABIM adalah platform sedekah dan infaq yang ditubuhkan untuk memudahkan masyarakat Malaysia memberi sumbangan kepada golongan yang memerlukan. Kami percaya setiap sumbangan, tidak kira besar atau kecil, dapat membawa perubahan yang bermakna dalam kehidupan mereka yang kurang bernasib baik.
+            {{ siteName }} adalah platform sedekah dan infaq yang ditubuhkan untuk memudahkan masyarakat Malaysia memberi sumbangan kepada golongan yang memerlukan. Kami percaya setiap sumbangan, tidak kira besar atau kecil, dapat membawa perubahan yang bermakna dalam kehidupan mereka yang kurang bernasib baik.
           </p>
         </div>
 
@@ -21,7 +21,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
             </div>
-            <h3 class="mt-4 text-lg font-semibold text-gray-900">Transparency</h3>
+            <h3 class="mt-4 text-lg font-semibold text-gray-900">Ketelusan</h3>
             <p class="mt-2 text-sm text-gray-500">Setiap sumbangan direkod dan dilaporkan secara telus kepada penderma.</p>
           </div>
           <div class="rounded-2xl bg-emerald-50 p-6 text-center">
@@ -30,7 +30,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <h3 class="mt-4 text-lg font-semibold text-gray-900">Community</h3>
+            <h3 class="mt-4 text-lg font-semibold text-gray-900">Komuniti</h3>
             <p class="mt-2 text-sm text-gray-500">Kami menyatukan masyarakat untuk saling membantu dan prihatin.</p>
           </div>
           <div class="rounded-2xl bg-emerald-50 p-6 text-center">
@@ -39,25 +39,25 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h3 class="mt-4 text-lg font-semibold text-gray-900">Trust</h3>
+            <h3 class="mt-4 text-lg font-semibold text-gray-900">Amanah</h3>
             <p class="mt-2 text-sm text-gray-500">Amanah dan integriti adalah teras setiap kempen yang kami jalankan.</p>
           </div>
         </div>
 
         <div class="mt-12 border-t border-gray-100 pt-12 text-center">
-          <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Our Impact</h2>
+          <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Impak Kami</h2>
           <div class="mt-8 grid grid-cols-3 gap-4">
             <div>
               <div class="text-2xl font-bold text-emerald-700">RM500K+</div>
-              <div class="mt-1 text-xs text-gray-400">Total Donations</div>
+              <div class="mt-1 text-xs text-gray-400">Jumlah Sumbangan</div>
             </div>
             <div>
               <div class="text-2xl font-bold text-emerald-700">1,200+</div>
-              <div class="mt-1 text-xs text-gray-400">Donors</div>
+              <div class="mt-1 text-xs text-gray-400">Penyumbang</div>
             </div>
             <div>
               <div class="text-2xl font-bold text-emerald-700">15+</div>
-              <div class="mt-1 text-xs text-gray-400">Campaigns</div>
+              <div class="mt-1 text-xs text-gray-400">Kempen</div>
             </div>
           </div>
         </div>
@@ -67,5 +67,10 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import HeroBanner from '../components/HeroBanner.vue'
+import { usePublicSettingStore } from '../stores/publicSettings'
+
+const publicSettings = usePublicSettingStore()
+const siteName = computed(() => publicSettings.settings.site_name || 'INFAQABIM')
 </script>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('amount', 15, 2);
             $table->string('reference_number')->nullable();
             $table->string('receipt_image');
-            $table->string('status')->default('pending'); // pending, approved, rejected
+            $table->string('status')->default('pending'); // pending, completed, failed
             $table->timestamps();
         });
     }

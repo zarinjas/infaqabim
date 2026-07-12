@@ -1,8 +1,9 @@
 <template>
   <section class="relative overflow-hidden" :class="bgGradient">
-    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+    <div class="absolute inset-0 opacity-[0.07]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 24px 24px" />
+    <div class="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
       <div class="max-w-xl">
-        <h1 class="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl" :class="titleClass">
+        <h1 class="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl" :class="titleClass">
           {{ title }}
         </h1>
         <p class="mt-4 text-base leading-relaxed sm:text-lg" :class="subtitleClass">

@@ -10,7 +10,7 @@ export const useDonationStore = defineStore('donations', () => {
     loading.value = true
     try {
       const { data } = await axios.get('/admin/donations')
-      donations.value = data
+      donations.value = data.data ?? data
     } finally {
       loading.value = false
     }

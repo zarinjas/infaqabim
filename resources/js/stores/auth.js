@@ -6,8 +6,8 @@ export const useAuthStore = defineStore('auth', () => {
   const admin = ref(null)
   const loading = ref(false)
 
-  async function login(email, password) {
-    const { data } = await axios.post('/admin/login', { email, password })
+  async function login(email, password, remember = false) {
+    const { data } = await axios.post('/admin/login', { email, password, remember })
     admin.value = data.admin
   }
 

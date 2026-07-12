@@ -16,14 +16,21 @@ export const useBannerStore = defineStore('banners', () => {
     }
   }
 
-  async function create(payload) {
-    const { data } = await axios.post('/admin/banners', payload)
+  async function create(formData) {
+    const { data } = await axios.post('/admin/banners', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
     banners.value.unshift(data)
     return data
   }
 
-  async function update(id, payload) {
-    const { data } = await axios.put(`/admin/banners/${id}`, payload)
+  async function update(id, formData) {
+    // PHP does not populate $_FILES for PUT/PATCH multipart requests, so we
+    // POST with Laravel's _method spoofing to keep file uploads working.
+    formData.append('_method', 'PUT')
+    const { data } = await axios.post(`/admin/banners/${id}`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
     const idx = banners.value.findIndex(b => b.id === id)
     if (idx !== -1) banners.value[idx] = data
     return data

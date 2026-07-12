@@ -5,6 +5,7 @@
       :value="modelValue"
       :type="type"
       :placeholder="placeholder"
+      :autocomplete="autocomplete"
       class="mt-1.5 block w-full rounded-xl border px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2"
       :class="error ? 'border-red-300 focus:border-red-400 focus:ring-red-100' : 'border-gray-200 focus:border-emerald-400 focus:ring-emerald-100'"
       @input="$emit('update:modelValue', $event.target.value)"
@@ -20,6 +21,7 @@ defineProps({
   type: { type: String, default: 'text' },
   placeholder: { type: String, default: '' },
   error: { type: String, default: '' },
+  autocomplete: { type: String, default: 'on' },
 })
 
 defineEmits(['update:modelValue'])

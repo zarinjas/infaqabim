@@ -29,6 +29,11 @@ const routes = [
         component: () => import('../pages/DonatePage.vue'),
       },
       {
+        path: 'donate/status',
+        name: 'donate.status',
+        component: () => import('../pages/DonationStatusPage.vue'),
+      },
+      {
         path: 'about',
         name: 'about',
         component: () => import('../pages/AboutPage.vue'),
@@ -36,16 +41,16 @@ const routes = [
     ],
   },
   {
+    path: '/admin/login',
+    name: 'admin.login',
+    meta: { guest: true },
+    component: () => import('../pages/admin/AdminLoginPage.vue'),
+  },
+  {
     path: '/admin',
     component: AdminLayout,
-    redirect: { name: 'admin.login' },
+    redirect: { name: 'admin.dashboard' },
     children: [
-      {
-        path: 'login',
-        name: 'admin.login',
-        meta: { guest: true },
-        component: () => import('../pages/admin/AdminLoginPage.vue'),
-      },
       {
         path: 'dashboard',
         name: 'admin.dashboard',

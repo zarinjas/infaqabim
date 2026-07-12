@@ -14,8 +14,10 @@ class AdminAuthController extends Controller
         $credentials = $request->validated();
 
         if (! Auth::guard('admins')->attempt($credentials, $request->boolean('remember'))) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return response()->json(['message' => 'Invalid email or password.'], 401);
         }
+
+        $request->session()->regenerate();
 
         $admin = Auth::guard('admins')->user();
 
@@ -25,9 +27,12 @@ class AdminAuthController extends Controller
         ]);
     }
 
-    public function logout(): JsonResponse
+    public function logout(Request $request): JsonResponse
     {
         Auth::guard('admins')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return response()->json(['message' => 'Logged out successfully']);
     }
