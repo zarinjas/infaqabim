@@ -17,11 +17,11 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->statefulApi();
         $middleware->validateCsrfTokens(except: [
-            'admin/login',
+            'api/admin/login',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(
-            fn (Request $request) => $request->is('api/*', 'admin/*'),
+            fn (Request $request) => $request->is('api/*'),
         );
     })->create();
