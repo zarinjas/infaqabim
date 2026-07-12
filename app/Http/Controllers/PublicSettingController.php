@@ -12,7 +12,7 @@ class PublicSettingController extends Controller
      * credentials and internal-only settings are intentionally excluded.
      */
     private const PUBLIC_KEYS = [
-        'site_name', 'site_email', 'site_phone', 'site_description',
+        'site_name', 'site_email', 'site_phone', 'site_description', 'app_logo',
         'nav_label_1', 'nav_label_2', 'nav_label_3', 'nav_label_4',
         'min_donation', 'max_donation', 'currency',
         'contact_address', 'contact_city', 'contact_state',
