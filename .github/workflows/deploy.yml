@@ -10,7 +10,37 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy to VPS
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install JS deps & build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Sync files to VPS
+        run: |
+          rsync -avz --delete \
+            --exclude='.env' \
+            --exclude='.git/' \
+            --exclude='node_modules/' \
+            --exclude='vendor/' \
+            --exclude='storage/' \
+            --exclude='bootstrap/cache/*.php' \
+            --exclude='.github/' \
+            -e 'ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no' \
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/infaqabim.my/public_html/
+
+      - name: Post-deploy (composer, migrate, cache)
         uses: appleboy/ssh-action@v1.2.1
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -19,9 +49,6 @@ jobs:
           script: |
             set -e
             cd /home/infaqabim.my/public_html
-            git pull origin main
             composer install --no-dev --optimize-autoloader
-            npm ci
-            npm run build
             php artisan migrate --force
             php artisan optimize
